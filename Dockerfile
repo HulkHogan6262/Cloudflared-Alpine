@@ -6,3 +6,7 @@ RUN wget https://github.com/cloudflare/cloudflared/releases/download/2025.6.1/cl
 RUN mv cloudflared-linux-amd64 cloudflared
 RUN chmod +x cloudflared
 RUN ln -s /usr/local/bin/cloudflared /usr/bin/cloudflared
+
+ENV TUNNEL_TOKEN
+
+CMD ["cloudflared", "tunnel", "run", "--token", "${TUNNEL_TOKEN}"]
